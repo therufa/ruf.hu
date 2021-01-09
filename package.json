@@ -6,9 +6,9 @@
     "build": "npm run build:tailwind",
     "dev": "run-p start:dev watch:tailwind",
     "start": "sirv public --single",
-    "watch:tailwind": "postcss public/tailwind.css -o public/index.css -w",
-    "build:tailwind": "NODE_ENV=production postcss public/tailwind.css -o public/index.css",
-    "start:dev": "sirv public --single --dev",
+    "watch:tailwind": "postcss tailwind.css -o public/index.css -w",
+    "build:tailwind": "NODE_ENV=production postcss tailwind.css -o public/index.css",
+    "start:dev": "sirv public --single --dev"
   },
   "dependencies": {
     "autoprefixer": "^10.2.1",
