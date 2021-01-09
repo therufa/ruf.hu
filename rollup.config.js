@@ -1,4 +1,5 @@
 import svelte from 'rollup-plugin-svelte';
+import ssr from "rollup-plugin-svelte-ssr";
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
@@ -41,7 +42,8 @@ export default {
 			compilerOptions: {
 				// enable run-time checks when not in production
 				dev: !production
-			}
+			},
+			generate: 'ssr'
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
@@ -68,7 +70,11 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+
+		ssr({
+			fileName: 'ssr.html'
+		})
 	],
 	watch: {
 		clearScreen: false
